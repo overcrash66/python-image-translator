@@ -14,6 +14,21 @@ This project utilizes optical character recognition (OCR) and translation to tra
 1. Clone this repository to your local machine.
 2. Install the required Python dependencies using `pip install pipenv && pipenv install`.
 
+or
+
+```
+py -3.10 -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+If you like to use torch with cuda:
+
+```
+pip uninstall torch torchvision
+pip install torch==2.5.1+cu118 torchaudio==2.5.1+cu118 torchvision==0.20.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+```
+
 ## Usage
 
 1. Place your input images in the `input` folder.

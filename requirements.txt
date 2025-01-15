@@ -1,0 +1,7 @@
+googletrans
+pillow
+easyocr
+deep-translator
+black
+opencv-python
+librosa

@@ -28,7 +28,7 @@ def get_font(image, text, width, height):
     for size in range(1, 500):
 
         # Create new font
-        new_font = ImageFont.load_default(size=font_size)
+        new_font = ImageFont.truetype("DejaVuSans-Bold.ttf", size=size)
 
         # Calculate bbox for version 8.0.0
         new_box = draw.textbbox((0, 0), text, font=new_font)
@@ -84,7 +84,7 @@ def get_background_color(image, x_min, y_min, x_max, y_max):
 
     # Find the most common color in the cropped region
     edge_colors = edge_region.getcolors(edge_region.size[0] * edge_region.size[1])
-    background_color = max(edge_colors, key=lambda x: x[0])[1]
+    background_color = max(edge_colors, key=lambda x: x[0])[1][:3]
 
     # Add a bit of discoloration to the background color
     background_color = add_discoloration(background_color, 40)
@@ -112,8 +112,8 @@ def replace_text_with_translation(image_path, translated_texts, text_boxes):
     image = Image.open(image_path)
     draw = ImageDraw.Draw(image)
 
-    # Load a font
-    font = ImageFont.load_default()
+    # Load a font that supports French accent marks
+    font = ImageFont.truetype("DejaVuSans-Bold.ttf", size=20)
 
     # Replace each text box with translated text
     for text_box, translated in zip(text_boxes, translated_texts):
@@ -159,10 +159,10 @@ def replace_text_with_translation(image_path, translated_texts, text_boxes):
 
 
 # Initialize the OCR reader
-reader = easyocr.Reader(["ch_sim", "en"], model_storage_directory = 'model')
+reader = easyocr.Reader(["en", "fr"], model_storage_directory = 'model')
 
 # Initialize the Translator
-translator = GoogleTranslator(source="zh-CN", target="en")
+translator = GoogleTranslator(source="en", target="fr")
 
 # Define input and output location
 input_folder = "input"
@@ -183,7 +183,7 @@ for filename in image_files:
     # Translate texts
     translated_texts = []
     for text_box, text in extracted_text_boxes:
-        translated_texts.append(translator.translate(text))
+        translated_texts.append(translator.translate(text).encode('utf-8').decode('utf-8'))
 
     # Replace text with translated text
     image = replace_text_with_translation(image_path, translated_texts, extracted_text_boxes)
