@@ -1,3 +1,13 @@
+# Image Translator
+
+This project utilizes optical character recognition (OCR) and translation to translate text within images from one language to another. It performs the following steps:
+
+1. **OCR Processing:** The project extracts text and its bounding boxes from input images using the EasyOCR library.
+2. **Translation:** It translates the extracted text using the Google Translator API.
+3. **Text Replacement:** The translated text is then overlaid onto the image, replacing the original text while maintaining its position and style.
+4. **Output:** Finally, the modified image with translated text is saved to an output folder.
+
+
 ## Usage
 
 1. Place your input images in the `input` folder.
@@ -32,6 +42,31 @@ This script converts a series of images into a video file. It includes:
 
 ## The goal of this update is to be able to translate video to video with the combination of [OpenTranslator](https://github.com/overcrash66/OpenTranslator).
 
+# Setup
+
+## Installation
+
+Clone this repository to your local machine.
+
+```
+Install the required Python dependencies using pip install pipenv && pipenv install.
+```
+
+or
+
+```
+py -3.10 -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+If you like to use torch with cuda:
+
+```
+pip uninstall torch torchvision
+pip install torch==2.5.1+cu118 torchaudio==2.5.1+cu118 torchvision==0.20.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+```
+
 ## Notes
 
 -   Supported languages for OCR can be seen [here](https://www.jaided.ai/easyocr/)
@@ -44,8 +79,8 @@ This script converts a series of images into a video file. It includes:
 
 ## Examples
 
-![image-1](https://github.com/boysugi20/python-image-translator/assets/53815726/cc2a52b3-2627-4f08-a428-c0dba4341bda)
-![image-1-translated](https://github.com/boysugi20/python-image-translator/assets/53815726/3ecafe2e-df19-4ca2-aeff-b05cc89394db)
+![image-1](./input/Untitled.png)
+![image-1-translated](output/Untitled-translated.png)
 
 ## Acknowledgments
 
