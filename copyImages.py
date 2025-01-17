@@ -1,3 +1,7 @@
+'''
+This script can be used if we stop translation queue and we would like to continue from where we stoped
+'''
+
 import os
 import shutil
 

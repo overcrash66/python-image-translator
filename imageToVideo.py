@@ -1,3 +1,7 @@
+'''
+This script is used to convert a list of images to a video respecting the order by image name / number
+'''
+
 import cv2
 import os
 import re

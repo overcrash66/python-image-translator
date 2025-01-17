@@ -1,3 +1,7 @@
+'''
+This script convert an input video to frames / a list of images
+'''
+
 import os
 import cv2
 

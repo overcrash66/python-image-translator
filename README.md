@@ -16,14 +16,14 @@ This project utilizes optical character recognition (OCR) and translation to tra
 
 ## New Features
 
-### SyncVideoToAudio.py
+### SyncVideoWithAudio.py
 This script syncs audio to a video file using advanced checks and features. It performs the following steps:
 - **Duration Check:** Ensures that the video and audio durations are within a specified tolerance.
 - **Audio Extraction:** Extracts audio from the video if available, or generates silent audio if not.
 - **Audio Alignment:** Aligns the audio using cross-correlation to calculate the offset.
 - **Synchronization:** Syncs the audio to the video using FFmpeg and saves the output.
 
-### MultipleImageProcessing.py
+### TranslateMultipleImage.py
 This script processes multiple images by performing OCR to extract text, translating the text, and replacing the original text in the images with the translated text. It includes:
 - **Batch Processing:** Allows processing images one by one or multiple images simultaneously using multithreading.
 - **Error Handling:** Handles translation errors and missing translations gracefully.
